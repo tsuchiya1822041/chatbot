@@ -1,0 +1,15 @@
+@startuml
+
+Actor "ユーザー"
+box LINEチャットボット
+    Actor LINE
+    ACtor LIME_API
+    Actor Heroku
+end box
+database google
+database 天気検索
+
+
+
+
+@enduml
