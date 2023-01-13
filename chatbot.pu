@@ -1,15 +1,19 @@
 @startuml
 
-Actor "ユーザー"
-box LINEチャットボット
-    Actor LINE
-    ACtor LIME_API
-    Actor Heroku
-end box
-database google
-database 天気検索
+class User
+class SearchWeather
+class http_client
+class make_url
+class request
+class create_response
 
+User -down-> SearchWeather
+SearchWeather -down-> http_client
+SearchWeather -down-> create_response
 
-
+http_client -down-> make_url
+make_url -right-> request
+request -left-> make_url
+create_response -down-> request
 
 @enduml
