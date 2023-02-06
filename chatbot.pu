@@ -1,19 +1,43 @@
 @startuml
 
 class User
-class SearchWeather
-class http_client
-class make_url
-class request
-class create_response
 
-User -down-> SearchWeather
-SearchWeather -down-> http_client
-SearchWeather -down-> create_response
+class HerokuFacade{
+    get_instance(client_type)
+    client_instance = get_instance(client_type)
+}
 
-http_client -down-> make_url
-make_url -right-> request
-request -left-> make_url
-create_response -down-> request
+class WeatherClient{
+    request
+    response
+}
+
+class DivinationClient{
+    request
+    response
+}
+
+class LineClient{
+    request
+    response
+}
+
+class GoogleClient{
+    request
+    response
+    make_schedule
+}
+
+class HttpClient{
+    request
+    response
+}
+
+
+User -- HerokuFacade
+HerokuFacade o-- WeatherClient
+HerokuFacade o-- DivinationClient
+HerokuFacade o-- LineClient
+HerokuFacade o-- GoogleClient
 
 @enduml
